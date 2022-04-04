@@ -1,4 +1,4 @@
-package Validators;
+package validators;
 
 import model.User;
 import model.enumTypes.EmailType;
@@ -22,8 +22,8 @@ public class Validators {
         return true;
     }
 
-    public static boolean isTrueNumberType(int selectedNumber) {
-        if (selectedNumber < 1 || selectedNumber > 5) {
+    public static boolean isTrueNumberType(String selectedNumber) {
+        if (selectedNumber.length()>1 &&(selectedNumber.charAt(0) < '1' || selectedNumber.charAt(0) > '5')) {
             System.err.println("\nYou entered wrong number. Try again.\n");
             return false;
         }
@@ -52,8 +52,8 @@ public class Validators {
         return false;
     }
 
-    public static boolean isTrueMailType(int selectedNumber) {
-        if (selectedNumber < 1 || selectedNumber > 7) {
+    public static boolean isTrueMailType(String selectedNumber) {
+        if (selectedNumber.length()>1 &&(selectedNumber.charAt(0) < '1' || selectedNumber.charAt(0) > '5')) {
             System.err.println("\nYou entered wrong number. Try again.\n");
             return false;
         }

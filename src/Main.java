@@ -1,4 +1,3 @@
-import model.ContactsList;
 import view.Start;
 
 public class Main {

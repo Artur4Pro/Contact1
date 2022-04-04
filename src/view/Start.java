@@ -20,14 +20,14 @@ public class Start {
                     4. Delete contact
                     5. Search
                     6. Exit""");
-            int stepOne = scanner.nextInt();
+            String stepOne = scanner.next();
             switch (stepOne) {
-                case 1 -> contactsList.prepareNewUser();
-                case 2 -> contactsList.printUsers();
-                case 3 -> contactsList.editContact();
-                case 4 -> contactsList.deleteContact();
-                case 5 -> contactsList.search();
-                case 6 -> {
+                case "1" -> contactsList.prepareNewUser();
+                case "2" -> contactsList.printUsers();
+                case "3" -> contactsList.editContact();
+                case "4" -> contactsList.deleteContact();
+                case "5" -> contactsList.search();
+                case "6" -> {
                     Record.writeRecord(contactsList);
                     scanner.close();
                     contactsList.exit();

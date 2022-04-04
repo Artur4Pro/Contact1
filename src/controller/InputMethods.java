@@ -1,6 +1,6 @@
 package controller;
 
-import Validators.Validators;
+import validators.Validators;
 import model.User;
 import java.util.Scanner;
 
@@ -34,7 +34,7 @@ public class InputMethods {
 
 
 
-    protected int selectPhoneNumberTypeFromMenu() {
+    protected String  selectPhoneNumberTypeFromMenu() {
         System.out.println("""
                 Enter type of contact (select number of type from MENU)\s
                  1 -> Mobile\s
@@ -43,14 +43,14 @@ public class InputMethods {
                  4 -> School
                  5 -> Company""");
 
-        int selectedNumber = scanner.nextInt();
+        String selectedNumber = scanner.next();
         if (!Validators.isTrueNumberType(selectedNumber)) {
             return selectPhoneNumberTypeFromMenu();
         }
         return selectedNumber;
     }
 
-    protected int selectEmailTypeFromMenu (){
+    protected String selectEmailTypeFromMenu (){
         System.out.println("""
                 Enter type of contact (select number of type from MENU)\s
                  1 -> Mail\s
@@ -61,14 +61,14 @@ public class InputMethods {
                  6 -> Aca\s
                  7 -> Other""");
 
-        int selectedNumber= scanner.nextInt();
+        String selectedNumber= scanner.next();
         if (!Validators.isTrueMailType(selectedNumber)) {
             return selectPhoneNumberTypeFromMenu();
         }
         return selectedNumber;
     }
 
-    protected int selectSearchTypeFromMenu() {
+    protected String selectSearchTypeFromMenu() {
         System.out.println("""
                 Enter type of search (select SEARCH type from MENU)\s
                  1 -> Name\s
@@ -77,7 +77,7 @@ public class InputMethods {
                  4 -> Email\s
                  5 -> Email type""");
 
-        int selectedNumber = scanner.nextInt();
+        String selectedNumber = scanner.next();
         if (!Validators.isTrueNumberType(selectedNumber)) {
             return selectSearchTypeFromMenu();
         }

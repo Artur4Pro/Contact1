@@ -1,6 +1,5 @@
 package model;
 
-import controller.InputMethods;
 import model.enumTypes.EmailType;
 import model.enumTypes.PhoneNumberType;
 

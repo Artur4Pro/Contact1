@@ -1,6 +1,6 @@
 package model;
 
-import Validators.Validators;
+import validators.Validators;
 import controller.InputMethods;
 import model.enumTypes.EmailType;
 import model.enumTypes.PhoneNumberType;
@@ -29,10 +29,10 @@ public class ContactsList extends InputMethods {
             haveEmail = true;
             do {
                 eMail = addMail();
+                emailType = emailTypeChecker(eMail);
             }
             while (!Validators.isNotContainEmail(eMail, User.emailAndMailType));
         }
-        emailType=emailTypeChecker(eMail);
         createOrNote(name, phoneNumber, phoneNumberType, eMail, emailType, haveEmail);
     }
 
@@ -92,10 +92,11 @@ public class ContactsList extends InputMethods {
                 usersList.remove(user);
                 User.phoneNumberAndName.remove(user.getPerson().getPhoneNumber());
                 User.phoneNumberTypeAndPhoneNumber.remove(user.getPerson().getPhoneNumberType());
-                User.emailAndName.remove(user.getPerson().geteMail());
-                User.emailAndMailType.remove(user.getPerson().geteMail());
-
-                System.out.println("\n>>>CONTACT DELETED<<<\n");
+                if (user.getPerson().geteMail() != null) {
+                    User.emailAndName.remove(user.getPerson().geteMail());
+                    User.emailAndMailType.remove(user.getPerson().geteMail());
+                }
+                System.err.println("\n>>>CONTACT DELETED<<<\n");
             }
         }
     }
@@ -107,13 +108,13 @@ public class ContactsList extends InputMethods {
 
     private void searchTypeTaker() {
 
-        int search = selectSearchTypeFromMenu();
+        String search = selectSearchTypeFromMenu();
         switch (search) {
-            case 1 -> searchFromName();
-            case 2 -> searchFromNumber();
-            case 3 -> searchFromNumberType();
-            case 4 -> searchFromEmail();
-            case 5 -> searchFromEmailType();
+            case "1" -> searchFromName();
+            case "2" -> searchFromNumber();
+            case "3" -> searchFromNumberType();
+            case "4" -> searchFromEmail();
+            case "5" -> searchFromEmailType();
         }
     }
 
@@ -199,21 +200,21 @@ public class ContactsList extends InputMethods {
 
 
     private PhoneNumberType phoneNumberTypeTaker() {
-        int phoneNumberType = selectPhoneNumberTypeFromMenu();
+        String phoneNumberType = selectPhoneNumberTypeFromMenu();
         switch (phoneNumberType) {
-            case 1 -> {
+            case "1" -> {
                 return PhoneNumberType.MOBILE;
             }
-            case 2 -> {
+            case "2" -> {
                 return PhoneNumberType.HOME;
             }
-            case 3 -> {
+            case "3" -> {
                 return PhoneNumberType.WORK;
             }
-            case 4 -> {
+            case "4" -> {
                 return PhoneNumberType.SCHOOL;
             }
-            case 5 -> {
+            case "5" -> {
                 return PhoneNumberType.COMPANY;
             }
         }
@@ -221,27 +222,27 @@ public class ContactsList extends InputMethods {
     }
 
     private EmailType eMailTypeTaker() {
-        int eMailType = selectEmailTypeFromMenu();
+        String eMailType = selectEmailTypeFromMenu();
         switch (eMailType) {
-            case 1 -> {
+            case "1" -> {
                 return EmailType.MAIL;
             }
-            case 2 -> {
+            case "2" -> {
                 return EmailType.GMAIL;
             }
-            case 3 -> {
+            case "3" -> {
                 return EmailType.ICLOUD;
             }
-            case 4 -> {
+            case "4" -> {
                 return EmailType.YAHOO;
             }
-            case 5 -> {
+            case "5" -> {
                 return EmailType.YANDEX;
             }
-            case 6 -> {
+            case "6" -> {
                 return EmailType.ACA;
             }
-            case 7 -> {
+            case "7" -> {
                 return EmailType.OTHER;
             }
             default -> System.err.println("\nWrong input. Try again.\n");
