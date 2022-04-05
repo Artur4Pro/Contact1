@@ -1,7 +1,7 @@
 package model;
 
+import controller.PersonController;
 import validators.Validators;
-import controller.InputMethods;
 import model.enumTypes.EmailType;
 import model.enumTypes.PhoneNumberType;
 
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class ContactsList extends InputMethods {
+public class ContactsList extends PersonController {
     private final List<User> usersList = new ArrayList<>();
 
     public void prepareNewUser() {
@@ -37,72 +37,80 @@ public class ContactsList extends InputMethods {
     }
 
     public void printUsers() {
-        for (User user : usersList) {
-            System.out.println(user);
+        if (Validators.isNotZeroSize(usersList)) {
+            for (User user : usersList) {
+                System.out.println(user);
+            }
         }
     }
 
     public void editContact() {
-        System.out.print("For finding ");
-        String phoneNumber = addPhoneNumber();
-        if (Validators.isContainPhoneNumber(usersList, phoneNumber)) {
+        if (Validators.isNotZeroSize(usersList)) {
+            System.out.print("For finding ");
+            String phoneNumber = addPhoneNumber();
+            if (Validators.isContainPhoneNumber(usersList, phoneNumber)) {
 
-            User user = userFinderByPhoneNumber(usersList, phoneNumber);
+                User user = userFinderByPhoneNumber(usersList, phoneNumber);
 
-            String name;
-            PhoneNumberType phoneNumberType;
-            String eMAIL;
+                String name;
+                PhoneNumberType phoneNumberType;
+                String eMAIL;
 
-            if (nameEditQuestion().equalsIgnoreCase("y")) {
-                name = addName();
-                user.getPerson().setName(name);
-                User.phoneNumberAndName.replace(phoneNumber, name); // mail u anumy che
-                if (user.getPerson().geteMail() != null) {
-                    User.emailAndName.replace(user.getPerson().geteMail(), name);
+                if (nameEditQuestion().equalsIgnoreCase("y")) {
+                    name = addName();
+                    user.getPerson().setName(name);
+                    User.phoneNumberAndName.replace(phoneNumber, name); // mail u anumy che
+                    if (user.getPerson().geteMail() != null) {
+                        User.emailAndName.replace(user.getPerson().geteMail(), name);
+                    }
                 }
-            }
-            if (phoneTypeEditQuestion().equalsIgnoreCase("y")) {
-                phoneNumberType = phoneNumberTypeTaker();
-                user.getPerson().setPhoneNumberType(phoneNumberType);
-                User.phoneNumberTypeAndPhoneNumber.remove(user.getPerson().getPhoneNumberType());
-                User.phoneNumberTypeAndPhoneNumber.put(phoneNumberType, phoneNumber);
-            }
-            if (eMailEditQuestion().equalsIgnoreCase("y")) {
-                do {
-                    eMAIL = addMail();
+                if (phoneTypeEditQuestion().equalsIgnoreCase("y")) {
+                    phoneNumberType = phoneNumberTypeTaker();
+                    user.getPerson().setPhoneNumberType(phoneNumberType);
+                    User.phoneNumberTypeAndPhoneNumber.remove(user.getPerson().getPhoneNumberType());
+                    User.phoneNumberTypeAndPhoneNumber.put(phoneNumberType, phoneNumber);
                 }
-                while (!Validators.isNotContainEmail(eMAIL, User.emailAndMailType));
-                user.getPerson().seteMail(eMAIL);
-                EmailType emailType = emailTypeChecker(eMAIL);
-                user.getPerson().setEmailType(emailType);
-                User.emailAndMailType.remove(user.getPerson().geteMail());
-                User.emailAndMailType.put(eMAIL, emailType);
-                User.emailAndName.remove(user.getPerson().geteMail());
-                User.emailAndName.put(eMAIL, user.getPerson().getName());
+                if (eMailEditQuestion().equalsIgnoreCase("y")) {
+                    do {
+                        eMAIL = addMail();
+                    }
+                    while (!Validators.isNotContainEmail(eMAIL, User.emailAndMailType));
+                    user.getPerson().seteMail(eMAIL);
+                    EmailType emailType = emailTypeChecker(eMAIL);
+                    user.getPerson().setEmailType(emailType);
+                    User.emailAndMailType.remove(user.getPerson().geteMail());
+                    User.emailAndMailType.put(eMAIL, emailType);
+                    User.emailAndName.remove(user.getPerson().geteMail());
+                    User.emailAndName.put(eMAIL, user.getPerson().getName());
+                }
             }
         }
     }
 
     public void deleteContact() {
-        String phoneNumber = addPhoneNumber();
-        if (Validators.isContainPhoneNumber(usersList, phoneNumber)) {
+        if (Validators.isNotZeroSize(usersList)) {
+            String phoneNumber = addPhoneNumber();
+            if (Validators.isContainPhoneNumber(usersList, phoneNumber)) {
 
-            User user = userFinderByPhoneNumber(usersList, phoneNumber);
-            if (deleteQuestion(user).equalsIgnoreCase("y")) {
-                usersList.remove(user);
-                User.phoneNumberAndName.remove(user.getPerson().getPhoneNumber());
-                User.phoneNumberTypeAndPhoneNumber.remove(user.getPerson().getPhoneNumberType());
-                if (user.getPerson().geteMail() != null) {
-                    User.emailAndName.remove(user.getPerson().geteMail());
-                    User.emailAndMailType.remove(user.getPerson().geteMail());
+                User user = userFinderByPhoneNumber(usersList, phoneNumber);
+                if (deleteQuestion(user).equalsIgnoreCase("y")) {
+                    usersList.remove(user);
+                    User.phoneNumberAndName.remove(user.getPerson().getPhoneNumber());
+                    User.phoneNumberTypeAndPhoneNumber.remove(user.getPerson().getPhoneNumberType());
+                    if (user.getPerson().geteMail() != null) {
+                        User.emailAndName.remove(user.getPerson().geteMail());
+                        User.emailAndMailType.remove(user.getPerson().geteMail());
+                    }
+                    System.err.println("\n>>>CONTACT DELETED<<<\n");
                 }
-                System.err.println("\n>>>CONTACT DELETED<<<\n");
             }
         }
     }
 
     public void search() {
-        searchTypeTaker();
+        if (Validators.isNotZeroSize(usersList)) {
+            searchTypeTaker();
+        }
     }
 
 

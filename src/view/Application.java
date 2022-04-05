@@ -5,14 +5,14 @@ import model.ContactsList;
 
 import java.util.Scanner;
 
-public class Start {
+public class Application {
     ContactsList contactsList = new ContactsList();
     Scanner scanner = new Scanner(System.in);
 
     public void start() {
         Record.readRecord(contactsList);
         boolean on = true;
-        while (on){
+        while (on) {
             System.out.println("""
                     1. New contact
                     2. Read contacts
@@ -31,7 +31,8 @@ public class Start {
                     Record.writeRecord(contactsList);
                     scanner.close();
                     contactsList.exit();
-                    on=false;}
+                    on = false;
+                }
                 default -> {
                     System.err.println("\nWrong Input ! Try Again\n");
                 }

@@ -2,9 +2,10 @@ package controller;
 
 import validators.Validators;
 import model.User;
+
 import java.util.Scanner;
 
-public class InputMethods {
+public class PersonController {
     Scanner scanner = new Scanner(System.in);
 
     protected String addName() {
@@ -33,8 +34,7 @@ public class InputMethods {
     }
 
 
-
-    protected String  selectPhoneNumberTypeFromMenu() {
+    protected String selectPhoneNumberTypeFromMenu() {
         System.out.println("""
                 Enter type of contact (select number of type from MENU)\s
                  1 -> Mobile\s
@@ -50,7 +50,7 @@ public class InputMethods {
         return selectedNumber;
     }
 
-    protected String selectEmailTypeFromMenu (){
+    protected String selectEmailTypeFromMenu() {
         System.out.println("""
                 Enter type of contact (select number of type from MENU)\s
                  1 -> Mail\s
@@ -61,7 +61,7 @@ public class InputMethods {
                  6 -> Aca\s
                  7 -> Other""");
 
-        String selectedNumber= scanner.next();
+        String selectedNumber = scanner.next();
         if (!Validators.isTrueMailType(selectedNumber)) {
             return selectPhoneNumberTypeFromMenu();
         }
@@ -85,70 +85,68 @@ public class InputMethods {
     }
 
 
-
-
     protected String mailQuestion() {
         System.out.println("""
                 Has he/she email ?
-                
+                                
                 If YES -> enter 'Y'
                 If NO -> enter anything else""");
 
         return scanner.next();
     }
 
-    protected String creatingQuestion (){
+    protected String creatingQuestion() {
         System.out.println("""
                 Do you want to create(SAVE) this contact ?
-                
+                                
                 If YES -> enter 'Y'
                 If NO -> enter anything else""");
 
         return scanner.next();
     }
 
-    protected String nameEditQuestion (){
+    protected String nameEditQuestion() {
         System.out.println("""
                 Do you want to EDIT NAME ?
-                
+                                
                 If YES -> enter 'Y'
                 If NO -> enter anything else""");
 
         return scanner.next();
     }
 
-    protected String phoneTypeEditQuestion (){
+    protected String phoneTypeEditQuestion() {
         System.out.println("""
                 Do you want to EDIT PHONE TYPE ?
-                
+                                
                 If YES -> enter 'Y'
                 If NO -> enter anything else""");
 
         return scanner.next();
     }
 
-    protected String eMailEditQuestion (){
+    protected String eMailEditQuestion() {
         System.out.println("""
                 Do you want to EDIT eMail ?
-                
+                                
                 If YES -> enter 'Y'
                 If NO -> enter anything else""");
 
         return scanner.next();
     }
 
-    protected String deleteQuestion(User user){
+    protected String deleteQuestion(User user) {
         System.out.println(user.toString());
         System.out.println("""
                 Do you want to DELETE this contact ?
-                
+                                
                 If YES -> enter 'Y'
                 If NO -> enter anything else""");
 
         return scanner.next();
     }
 
-    public void scannerCloser (){
+    public void scannerCloser() {
         scanner.close();
     }
 

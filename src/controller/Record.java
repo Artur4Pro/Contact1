@@ -48,8 +48,6 @@ public class Record {
     }
 
 
-
-
     private static PhoneNumberType getPhoneTypeFromRecord(String[] arr) {
         return switch (arr[2]) {
             case "MOBILE" -> PhoneNumberType.MOBILE;
@@ -78,16 +76,16 @@ public class Record {
         user.getPerson().setName(arr[0]);
         user.getPerson().setPhoneNumber(arr[1]);
         user.getPerson().setPhoneNumberType(getPhoneTypeFromRecord(arr));
-        User.phoneNumberAndNameSetter(arr[1],arr[0]);
-        User.phoneNumberTypeAndPhoneNumberSetter(arr[1],getPhoneTypeFromRecord(arr));
+        User.phoneNumberAndNameSetter(arr[1], arr[0]);
+        User.phoneNumberTypeAndPhoneNumberSetter(arr[1], getPhoneTypeFromRecord(arr));
     }
 
     private static void setEmailEmailTypeFromRecord(String[] arr, ContactsList contacts, User user) {
         setNumberNameNumberTypeFromRecord(arr, contacts, user);
         user.getPerson().seteMail(arr[3]);
         user.getPerson().setEmailType(ContactsList.emailTypeChecker(arr[3]));
-        User.emailAndNameSetter(user.getPerson().getName(),arr[3]);
-        User.emailAndEmailTypeSetter(arr[3],ContactsList.emailTypeChecker(arr[3]));
+        User.emailAndNameSetter(user.getPerson().getName(), arr[3]);
+        User.emailAndEmailTypeSetter(arr[3], ContactsList.emailTypeChecker(arr[3]));
     }
 
 }

@@ -6,13 +6,12 @@ import model.enumTypes.PhoneNumberType;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class User  {
+public class User {
 
-    private Person person ;
+    private Person person;
 
     public User() {
     }
-
 
 
     /**
@@ -72,15 +71,15 @@ public class User  {
     /**
      * Take arguments and set in phone emailAndPhoneNumber map.
      *
-     * @param name phone number.
-     * @param email       email.
+     * @param name  phone number.
+     * @param email email.
      */
     public static void emailAndNameSetter(String name, String email) {
         emailAndName.put(email, name);
     }
 
-    public static void emailAndEmailTypeSetter(String email , EmailType emailType){
-        emailAndMailType.put(email,emailType);
+    public static void emailAndEmailTypeSetter(String email, EmailType emailType) {
+        emailAndMailType.put(email, emailType);
     }
 
     public Person getPerson() {

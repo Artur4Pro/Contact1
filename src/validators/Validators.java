@@ -1,5 +1,6 @@
 package validators;
 
+import model.ContactsList;
 import model.User;
 import model.enumTypes.EmailType;
 
@@ -23,7 +24,7 @@ public class Validators {
     }
 
     public static boolean isTrueNumberType(String selectedNumber) {
-        if (selectedNumber.length()>1 &&(selectedNumber.charAt(0) < '1' || selectedNumber.charAt(0) > '5')) {
+        if (selectedNumber.length() > 1 && (selectedNumber.charAt(0) < '1' || selectedNumber.charAt(0) > '5')) {
             System.err.println("\nYou entered wrong number. Try again.\n");
             return false;
         }
@@ -53,7 +54,7 @@ public class Validators {
     }
 
     public static boolean isTrueMailType(String selectedNumber) {
-        if (selectedNumber.length()>1 &&(selectedNumber.charAt(0) < '1' || selectedNumber.charAt(0) > '5')) {
+        if (selectedNumber.length() > 1 && (selectedNumber.charAt(0) < '1' || selectedNumber.charAt(0) > '5')) {
             System.err.println("\nYou entered wrong number. Try again.\n");
             return false;
         }
@@ -88,6 +89,18 @@ public class Validators {
         }
         System.err.println("\nContact is not found\n");
         return false;
+    }
+
+    public static boolean isNotZeroSize(List<User> usersList) {
+        if (usersList.size() == 0) {
+            System.err.println("""
+
+                    >>>CONTACTS LIST IS EMPTY<<<
+                    >>>FOR ADDING PRESS 1<<<
+                    """);
+            return false;
+        }
+        return true;
     }
 
     public static String deleteSpace(String str) {

@@ -81,7 +81,7 @@ public class Person {
                 "Name  " + name +
                         " :  Phone Number  " + phoneNumber +
                         " :  Group  " + phoneNumberType +
-                        " :  Email  " + emailType + " : " + eMail ;
+                        " :  Email  " + emailType + " : " + eMail;
     }
 }
 
