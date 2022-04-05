@@ -5,6 +5,6 @@ public class Main {
 
         Start start = new Start();
         start.start();
-        System.out.println("help");
+        System.out.println("dsjlnckj");
     }
 }
