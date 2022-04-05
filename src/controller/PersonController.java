@@ -37,11 +37,11 @@ public class PersonController {
     protected String selectPhoneNumberTypeFromMenu() {
         System.out.println("""
                 Enter type of contact (select number of type from MENU)\s
-                 1 -> Mobile\s
-                 2 -> Home\s
-                 3 -> Work\s
-                 4 -> School
-                 5 -> Company""");
+                 1 -> Mobile ☎\s
+                 2 -> Home 🏠\s
+                 3 -> Work 👔\s
+                 4 -> School 🏫
+                 5 -> Company 🛄""");
 
         String selectedNumber = scanner.next();
         if (!Validators.isTrueNumberType(selectedNumber)) {
@@ -53,7 +53,7 @@ public class PersonController {
     protected String selectEmailTypeFromMenu() {
         System.out.println("""
                 Enter type of contact (select number of type from MENU)\s
-                 1 -> Mail\s
+                 1 -> Mail \s
                  2 -> Gmail\s
                  3 -> iCloud\s
                  4 -> Yahoo\s
@@ -71,11 +71,11 @@ public class PersonController {
     protected String selectSearchTypeFromMenu() {
         System.out.println("""
                 Enter type of search (select SEARCH type from MENU)\s
-                 1 -> Name\s
-                 2 -> Phone number\s
-                 3 -> Phone number type\s
-                 4 -> Email\s
-                 5 -> Email type""");
+                 1 -> Name 🔍\s
+                 2 -> Phone number 🔍\s
+                 3 -> Phone number type 🔍\s
+                 4 -> Email 🔍\s
+                 5 -> Email type 🔍""");
 
         String selectedNumber = scanner.next();
         if (!Validators.isTrueNumberType(selectedNumber)) {
