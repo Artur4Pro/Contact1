@@ -11,6 +11,15 @@ public class Application {
 
     public void start() {
         Record.readRecord(contactsList);
+        System.out.println("""       
+                ───▄▄▄▄▄▄
+                ─▄▀░░░░░░▀▄░██ ██ █████ ██   ██   █████
+                ▐░▄▄▄░░▐▀▌░▌██▄██ ██▄▄▄ ██   ██   ██ ██
+                ▐░░░░░░░░░░▌██▀██ ██▀▀▀ ██   ██   ██ ██
+                ▐░░▀▄░░▄▀░░▌██ ██ █████ ████ ████ █████
+                ─▀▄░░▀▀░░▄▀
+                ───▀▀▀▀▀▀---
+                """);
         boolean on = true;
         while (on) {
             System.out.println("""
