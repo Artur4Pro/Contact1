@@ -1,8 +1,8 @@
-import view.Start;
+import view.Application;
 
 public class Main {
     public static void main(String[] args) {
-        Start start = new Start();
+        Application start = new Application();
         start.start();
     }
 }
