@@ -17,11 +17,11 @@ public class PersonController implements PersonControllerInterface {
 
     @Override
     public String addMail() {
-        System.out.println("Enter mail");
-        String mail = scanner.nextLine();
-        if (!Validators.isTrueMail(mail)) {
-            return addMail();
-        }
+        String mail;
+        do {
+            System.out.println("Enter mail");
+            mail = scanner.nextLine();
+        } while (!Validators.isTrueMail(mail));
         return mail;
     }
 
@@ -35,11 +35,11 @@ public class PersonController implements PersonControllerInterface {
 
     @Override
     public String addPhoneNumber() {
-        System.out.println("Enter phone number");
-        String phoneNumber = scanner.nextLine();
-        if (!Validators.isTruePhoneNumber(phoneNumber)) {
-            return addPhoneNumber();
-        }
+        String phoneNumber;
+        do {
+            System.out.println("Enter phone number");
+            phoneNumber = scanner.nextLine();
+        } while (!Validators.isTruePhoneNumber(phoneNumber));
         return Validators.deleteSpace(phoneNumber);
     }
 
@@ -55,8 +55,8 @@ public class PersonController implements PersonControllerInterface {
                      4 -> School 🏫
                      5 -> Company 🛄""");
 
-             selectedNumber = scanner.nextLine();
-        }while (!Validators.isTrueNumberType(selectedNumber));
+            selectedNumber = scanner.nextLine();
+        } while (!Validators.isTrueNumberType(selectedNumber));
         return selectedNumber;
     }
 
@@ -74,8 +74,8 @@ public class PersonController implements PersonControllerInterface {
                      6 -> Aca\s
                      7 -> Other""");
 
-             selectedNumber = scanner.nextLine();
-        }while (!Validators.isTrueMailType(selectedNumber));
+            selectedNumber = scanner.nextLine();
+        } while (!Validators.isTrueMailType(selectedNumber));
         return selectedNumber;
     }
 
@@ -92,7 +92,7 @@ public class PersonController implements PersonControllerInterface {
                      5 -> Email type 🔍""");
 
             selectedNumber = scanner.nextLine();
-        }while (!Validators.isTrueNumberType(selectedNumber));
+        } while (!Validators.isTrueNumberType(selectedNumber));
         return selectedNumber;
     }
 
