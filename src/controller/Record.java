@@ -8,6 +8,8 @@ import model.enumTypes.PhoneNumberType;
 
 import java.io.*;
 
+
+
 public class Record {
 
     public static void writeRecord(ContactsList contactsList) {
@@ -83,9 +85,20 @@ public class Record {
     private static void setEmailEmailTypeFromRecord(String[] arr, ContactsList contacts, User user) {
         setNumberNameNumberTypeFromRecord(arr, contacts, user);
         user.getPerson().seteMail(arr[3]);
-        user.getPerson().setEmailType(ContactsList.emailTypeChecker(arr[3]));
+        user.getPerson().setEmailType(emailTypeChecker(arr[3]));
         User.emailAndNameSetter(user.getPerson().getName(), arr[3]);
-        User.emailAndEmailTypeSetter(arr[3], ContactsList.emailTypeChecker(arr[3]));
+        User.emailAndEmailTypeSetter(arr[3], emailTypeChecker(arr[3]));
     }
-
+    public static   EmailType emailTypeChecker(String eMail) {
+        return EmailType.getMailType(cuttingMailForCheckingType(eMail));
+    }
+    public static String cuttingMailForCheckingType(String eMail) {
+        int substringStart = 0;
+        for (int i = 0; i < eMail.length(); i++) {
+            if (eMail.charAt(i) == '@') {
+                substringStart = i;
+            }
+        }
+        return eMail.substring(substringStart);
+    }
 }

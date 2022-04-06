@@ -32,6 +32,10 @@ public class Validators {
     }
 
     public static boolean isTrueMail(String mail) {
+        if(mail.contains(" ")){
+            System.err.println("\n Wrong email address. Try again.\n");
+            return false;
+        }
         boolean flag = false;
         int countOfDog = 0;
         for (int i = 0; i < mail.length(); i++) {
@@ -112,6 +116,4 @@ public class Validators {
         }
         return ret.toString();
     }
-
-
 }

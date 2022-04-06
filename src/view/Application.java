@@ -1,5 +1,6 @@
 package view;
 
+import controller.PersonController;
 import controller.Record;
 import model.ContactsList;
 

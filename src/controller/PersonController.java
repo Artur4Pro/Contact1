@@ -1,40 +1,50 @@
 package controller;
 
+import util.PersonControllerInterface;
 import validators.Validators;
 import model.User;
 
 import java.util.Scanner;
 
-public class PersonController {
+public class PersonController implements PersonControllerInterface {
     Scanner scanner = new Scanner(System.in);
 
-    protected String addName() {
-        System.out.println("Enter name\n");
-        String name = scanner.next();
-
-        return Validators.deleteSpace(name);
+    @Override
+    public String addName() {
+        System.out.println("Enter name");
+        return scanner.nextLine();
     }
 
-    protected String addMail() {
-        System.out.println("Enter mail\n");
-        String mail = scanner.next();
+    @Override
+    public String addMail() {
+        System.out.println("Enter mail");
+        String mail = scanner.nextLine();
         if (!Validators.isTrueMail(mail)) {
             return addMail();
         }
         return mail;
     }
 
-    protected String addPhoneNumber() {
-        System.out.println("Enter phone number\n");
+    @Override
+    public String addSearchMail() {
+        System.out.println("Enter mail");
+        String mail = scanner.nextLine();
+        mail = Validators.deleteSpace(mail).toLowerCase();
+        return mail;
+    }
+
+    @Override
+    public String addPhoneNumber() {
+        System.out.println("Enter phone number");
         String phoneNumber = scanner.nextLine();
         if (!Validators.isTruePhoneNumber(phoneNumber)) {
             return addPhoneNumber();
         }
-        return phoneNumber;
+        return Validators.deleteSpace(phoneNumber);
     }
 
-
-    protected String selectPhoneNumberTypeFromMenu() {
+    @Override
+    public String selectPhoneNumberTypeFromMenu() {
         System.out.println("""
                 Enter type of contact (select number of type from MENU)\s
                  1 -> Mobile ☎\s
@@ -43,14 +53,15 @@ public class PersonController {
                  4 -> School 🏫
                  5 -> Company 🛄""");
 
-        String selectedNumber = scanner.next();
+        String selectedNumber = scanner.nextLine();
         if (!Validators.isTrueNumberType(selectedNumber)) {
             return selectPhoneNumberTypeFromMenu();
         }
         return selectedNumber;
     }
 
-    protected String selectEmailTypeFromMenu() {
+    @Override
+    public String selectEmailTypeFromMenu() {
         System.out.println("""
                 Enter type of contact (select number of type from MENU)\s
                  1 -> Mail \s
@@ -61,14 +72,15 @@ public class PersonController {
                  6 -> Aca\s
                  7 -> Other""");
 
-        String selectedNumber = scanner.next();
+        String selectedNumber = scanner.nextLine();
         if (!Validators.isTrueMailType(selectedNumber)) {
             return selectPhoneNumberTypeFromMenu();
         }
         return selectedNumber;
     }
 
-    protected String selectSearchTypeFromMenu() {
+    @Override
+    public String selectSearchTypeFromMenu() {
         System.out.println("""
                 Enter type of search (select SEARCH type from MENU)\s
                  1 -> Name 🔍\s
@@ -77,65 +89,70 @@ public class PersonController {
                  4 -> Email 🔍\s
                  5 -> Email type 🔍""");
 
-        String selectedNumber = scanner.next();
+        String selectedNumber = scanner.nextLine();
         if (!Validators.isTrueNumberType(selectedNumber)) {
             return selectSearchTypeFromMenu();
         }
         return selectedNumber;
     }
 
-
-    protected String mailQuestion() {
+    @Override
+    public String mailQuestion() {
         System.out.println("""
                 Has he/she email ?
                                 
                 If YES -> enter 'Y'
                 If NO -> enter anything else""");
 
-        return scanner.next();
+        return scanner.nextLine();
     }
 
-    protected String creatingQuestion() {
+    @Override
+    public String creatingQuestion() {
         System.out.println("""
                 Do you want to create(SAVE) this contact ?
                                 
                 If YES -> enter 'Y'
                 If NO -> enter anything else""");
 
-        return scanner.next();
+        return scanner.nextLine();
     }
 
-    protected String nameEditQuestion() {
+    @Override
+    public String nameEditQuestion() {
         System.out.println("""
                 Do you want to EDIT NAME ?
                                 
                 If YES -> enter 'Y'
                 If NO -> enter anything else""");
 
-        return scanner.next();
+        return scanner.nextLine();
     }
 
-    protected String phoneTypeEditQuestion() {
+    @Override
+    public String phoneTypeEditQuestion() {
         System.out.println("""
                 Do you want to EDIT PHONE TYPE ?
                                 
                 If YES -> enter 'Y'
                 If NO -> enter anything else""");
 
-        return scanner.next();
+        return scanner.nextLine();
     }
 
-    protected String eMailEditQuestion() {
+    @Override
+    public String eMailEditQuestion() {
         System.out.println("""
                 Do you want to EDIT eMail ?
                                 
                 If YES -> enter 'Y'
                 If NO -> enter anything else""");
 
-        return scanner.next();
+        return scanner.nextLine();
     }
 
-    protected String deleteQuestion(User user) {
+    @Override
+    public String deleteQuestion(User user) {
         System.out.println(user.toString());
         System.out.println("""
                 Do you want to DELETE this contact ?
@@ -143,9 +160,10 @@ public class PersonController {
                 If YES -> enter 'Y'
                 If NO -> enter anything else""");
 
-        return scanner.next();
+        return scanner.nextLine();
     }
 
+    @Override
     public void scannerCloser() {
         scanner.close();
     }
