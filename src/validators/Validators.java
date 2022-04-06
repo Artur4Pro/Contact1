@@ -24,7 +24,7 @@ public class Validators {
     }
 
     public static boolean isTrueNumberType(String selectedNumber) {
-        if (selectedNumber.length() > 1 && (selectedNumber.charAt(0) < '1' || selectedNumber.charAt(0) > '5')) {
+        if (selectedNumber.length() > 1 || (selectedNumber.charAt(0) < '1' || selectedNumber.charAt(0) > '5')) {
             System.err.println("\nYou entered wrong number. Try again.\n");
             return false;
         }
@@ -58,7 +58,7 @@ public class Validators {
     }
 
     public static boolean isTrueMailType(String selectedNumber) {
-        if (selectedNumber.length() > 1 && (selectedNumber.charAt(0) < '1' || selectedNumber.charAt(0) > '5')) {
+        if (selectedNumber.length() > 1 || (selectedNumber.charAt(0) < '1' || selectedNumber.charAt(0) > '7')) {
             System.err.println("\nYou entered wrong number. Try again.\n");
             return false;
         }

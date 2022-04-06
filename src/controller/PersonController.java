@@ -45,54 +45,54 @@ public class PersonController implements PersonControllerInterface {
 
     @Override
     public String selectPhoneNumberTypeFromMenu() {
-        System.out.println("""
-                Enter type of contact (select number of type from MENU)\s
-                 1 -> Mobile ☎\s
-                 2 -> Home 🏠\s
-                 3 -> Work 👔\s
-                 4 -> School 🏫
-                 5 -> Company 🛄""");
+        String selectedNumber;
+        do {
+            System.out.println("""
+                    Enter type of contact (select number of type from MENU)\s
+                     1 -> Mobile ☎\s
+                     2 -> Home 🏠\s
+                     3 -> Work 👔\s
+                     4 -> School 🏫
+                     5 -> Company 🛄""");
 
-        String selectedNumber = scanner.nextLine();
-        if (!Validators.isTrueNumberType(selectedNumber)) {
-            return selectPhoneNumberTypeFromMenu();
-        }
+             selectedNumber = scanner.nextLine();
+        }while (!Validators.isTrueNumberType(selectedNumber));
         return selectedNumber;
     }
 
     @Override
     public String selectEmailTypeFromMenu() {
-        System.out.println("""
-                Enter type of contact (select number of type from MENU)\s
-                 1 -> Mail \s
-                 2 -> Gmail\s
-                 3 -> iCloud\s
-                 4 -> Yahoo\s
-                 5 -> Yandex\s
-                 6 -> Aca\s
-                 7 -> Other""");
+        String selectedNumber;
+        do {
+            System.out.println("""
+                    Enter type of contact (select number of type from MENU)\s
+                     1 -> Mail \s
+                     2 -> Gmail\s
+                     3 -> iCloud\s
+                     4 -> Yahoo\s
+                     5 -> Yandex\s
+                     6 -> Aca\s
+                     7 -> Other""");
 
-        String selectedNumber = scanner.nextLine();
-        if (!Validators.isTrueMailType(selectedNumber)) {
-            return selectPhoneNumberTypeFromMenu();
-        }
+             selectedNumber = scanner.nextLine();
+        }while (!Validators.isTrueMailType(selectedNumber));
         return selectedNumber;
     }
 
     @Override
     public String selectSearchTypeFromMenu() {
-        System.out.println("""
-                Enter type of search (select SEARCH type from MENU)\s
-                 1 -> Name 🔍\s
-                 2 -> Phone number 🔍\s
-                 3 -> Phone number type 🔍\s
-                 4 -> Email 🔍\s
-                 5 -> Email type 🔍""");
+        String selectedNumber;
+        do {
+            System.out.println("""
+                    Enter type of search (select SEARCH type from MENU)\s
+                     1 -> Name 🔍\s
+                     2 -> Phone number 🔍\s
+                     3 -> Phone number type 🔍\s
+                     4 -> Email 🔍\s
+                     5 -> Email type 🔍""");
 
-        String selectedNumber = scanner.nextLine();
-        if (!Validators.isTrueNumberType(selectedNumber)) {
-            return selectSearchTypeFromMenu();
-        }
+            selectedNumber = scanner.nextLine();
+        }while (!Validators.isTrueNumberType(selectedNumber));
         return selectedNumber;
     }
 
