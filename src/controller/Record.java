@@ -50,6 +50,21 @@ public class Record {
     }
 
 
+    public static   EmailType emailTypeChecker(String eMail) {
+        return EmailType.getMailType(cuttingMailForCheckingType(eMail));
+    }
+
+    public static String cuttingMailForCheckingType(String eMail) {
+        int substringStart = 0;
+        for (int i = 0; i < eMail.length(); i++) {
+            if (eMail.charAt(i) == '@') {
+                substringStart = i;
+            }
+        }
+        return eMail.substring(substringStart);
+    }
+
+
     private static PhoneNumberType getPhoneTypeFromRecord(String[] arr) {
         return switch (arr[2]) {
             case "MOBILE" -> PhoneNumberType.MOBILE;
@@ -88,17 +103,5 @@ public class Record {
         user.getPerson().setEmailType(emailTypeChecker(arr[3]));
         User.emailAndNameSetter(user.getPerson().getName(), arr[3]);
         User.emailAndEmailTypeSetter(arr[3], emailTypeChecker(arr[3]));
-    }
-    public static   EmailType emailTypeChecker(String eMail) {
-        return EmailType.getMailType(cuttingMailForCheckingType(eMail));
-    }
-    public static String cuttingMailForCheckingType(String eMail) {
-        int substringStart = 0;
-        for (int i = 0; i < eMail.length(); i++) {
-            if (eMail.charAt(i) == '@') {
-                substringStart = i;
-            }
-        }
-        return eMail.substring(substringStart);
     }
 }
